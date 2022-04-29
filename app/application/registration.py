@@ -636,6 +636,8 @@ def format_data(db_list):
                 em['overwrite_cell_color'].append(['tsl_ack_email_tx', 'orange'])
         else:
             em['sequence_counter'] = "NA"
+            if guest.status != 'none' and guest.status != 'registered':
+                em['overwrite_row_color'] = guest.status
         out.append(em)
     return out
 

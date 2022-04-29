@@ -98,8 +98,7 @@ flask_app.config.from_pyfile('config.py')
 # V0.67: in a table, double click a row to edit
 # V0.68: edit registration: condense form to improve overview
 # V0.69: add sequence-numbers when on waiting-list.  Preempted empty integers (is a ''-string).  Added logging
-# V0.70: removed test code
-# V0.71: add more details to logging
+# V0.70: removed test code# V0.71: add more details to logging
 # V0.72: added over- and undercount to the registers.  Model: don't update properties when incorrect type.  Cleanup Guest callback
 # V0.73: added warnings
 # V0.74: log when registrationstatus is updated
@@ -116,6 +115,8 @@ flask_app.config.from_pyfile('config.py')
 # V0.83: bugfixed cell_edit in datatables.  Added comment to start uwsgi from commandline
 # V0.84: update in uwsgi logging
 # V0.85: updated logo.  Handle commit-exception.  Registration: introduced multiselect to select fields-of-study
+# V0.86: color row depending on the status
+
 
 #TODO: add sequence numbers when on the waiting list.  Add them on the confirmation document?
 #TODO: add statistic counters, e.g. number per field-of-study, ...
@@ -133,7 +134,7 @@ flask_app.config.from_pyfile('config.py')
 
 @flask_app.context_processor
 def inject_defaults():
-    return dict(version='@ 2022 MB. V0.85', title=flask_app.config['HTML_TITLE'], site_name=flask_app.config['SITE_NAME'])
+    return dict(version='@ 2022 MB. V0.86', title=flask_app.config['HTML_TITLE'], site_name=flask_app.config['SITE_NAME'])
 
 
 #  enable logging
