@@ -169,6 +169,8 @@ class Guest(db.Model):
     field_of_study = db.Column(db.String(256), default='')
     indicator = db.Column(db.Boolean, default=False)   #kansarm
     reason_priority = db.Column(db.String(256), default='')   #reden van voorrang
+    row_color = db.Column(db.String(256), default='')   #give a row a color
+
 
     def get_register(self):
         return self.field_of_study.split('-')[0]
@@ -250,6 +252,7 @@ class Guest(db.Model):
         'timeslot_dutch': datetime_to_dutch_datetime_string(self.timeslot),
         'full_name': f"{self.last_name} {self.first_name}",
         'child_name': f"{self.child_last_name} {self.child_first_name}",
+        'row_color': self.row_color,
         'overwrite_cell_color': []
         }
         if msettings.use_register():
