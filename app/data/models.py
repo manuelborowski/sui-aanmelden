@@ -169,7 +169,7 @@ class Guest(db.Model):
     field_of_study = db.Column(db.String(256), default='')
     indicator = db.Column(db.Boolean, default=False)   #kansarm
     reason_priority = db.Column(db.String(256), default='')   #reden van voorrang
-    row_color = db.Column(db.String(256), default='')   #give a row a color
+    row_color = db.Column(db.String(256), default='none')   #give a row a color
 
 
     def get_register(self):
