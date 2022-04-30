@@ -117,6 +117,7 @@ flask_app.config.from_pyfile('config.py')
 # V0.85: updated logo.  Handle commit-exception.  Registration: introduced multiselect to select fields-of-study
 # V0.86: color row depending on the status
 # V0.87: bugix, introduce seperate column to set the color of a rows
+# V0.88: columns visible: updated so that, when the config_columns is changed, the columns visible is being reset.
 
 
 #TODO: add sequence numbers when on the waiting list.  Add them on the confirmation document?
@@ -135,7 +136,7 @@ flask_app.config.from_pyfile('config.py')
 
 @flask_app.context_processor
 def inject_defaults():
-    return dict(version='@ 2022 MB. V0.87', title=flask_app.config['HTML_TITLE'], site_name=flask_app.config['SITE_NAME'])
+    return dict(version='@ 2022 MB. V0.88', title=flask_app.config['HTML_TITLE'], site_name=flask_app.config['SITE_NAME'])
 
 
 #  enable logging

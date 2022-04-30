@@ -253,8 +253,14 @@ $(document).ready(function () {
 
     //Toggle column visibility
     let column_visible_div = document.querySelector('.column-visible-div');
+    let config_colums_cache = localStorage.getItem(`ConfigColumns-${view}`);
+    const config_columns_string = JSON.stringify(config_columns);
+    if (config_colums_cache === null || config_colums_cache !== config_columns_string) {
+        localStorage.setItem(`ConfigColumns-${view}`, config_columns_string);
+        localStorage.removeItem(`ColumnsVisible-${view}`)
+    }
     let column_visible_settings = JSON.parse(localStorage.getItem(`ColumnsVisible-${view}`));
-    if (!column_visible_settings || column_visible_settings.length !== config_columns.length) {
+    if (column_visible_settings === null) {
         column_visible_settings = []
         config_columns.forEach((column, i) => {
             column_visible_settings.push({name: column.name, visible: column.visible});
