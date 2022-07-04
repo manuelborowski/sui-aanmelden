@@ -383,10 +383,10 @@ def registration_add(data):
         duplicate_guest = mguest.get_first_guest(data_selection)
         if duplicate_guest:
             #check if a guest can register on multiple registers
-            register_settings = app.data.settings.get_json_template('student-register-settings')
-            new_register = data['field_of_study'].split('-')[0]
-            if 'multiple-registrations' not in register_settings[duplicate_guest.register] or new_register not in register_settings[duplicate_guest.register]['multiple-registrations']:
-                return {"status": False, "data": f"Fout, de student {duplicate_guest.child_first_name} {duplicate_guest.child_last_name} en mailadres {duplicate_guest.email}\n is reeds geregistreerd."}
+            # register_settings = app.data.settings.get_json_template('student-register-settings')
+            # new_register = data['field_of_study'].split('-')[0]
+            # if 'multiple-registrations' not in register_settings[duplicate_guest.register] or new_register not in register_settings[duplicate_guest.register]['multiple-registrations']:
+            return {"status": False, "data": f"Fout, de student {duplicate_guest.child_first_name} {duplicate_guest.child_last_name} en mailadres {duplicate_guest.email}\n is reeds geregistreerd."}
         misc_config = app.data.settings.get_json_template('import-misc-fields')
         extra_fields = [c['veldnaam'] for c in misc_config]
         extra_field = {f: '' for f in extra_fields}
