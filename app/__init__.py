@@ -120,6 +120,7 @@ flask_app.config.from_pyfile('config.py')
 # V0.88: columns visible: updated so that, when the config_columns is changed, the columns visible is being reset.
 # V0.89: bugfix, set default color to none
 # V0.90: bugifx, if a student is registered twice, show appropriate error message
+# V0.91: pip install update
 
 
 #TODO: add sequence numbers when on the waiting list.  Add them on the confirmation document?
@@ -138,7 +139,7 @@ flask_app.config.from_pyfile('config.py')
 
 @flask_app.context_processor
 def inject_defaults():
-    return dict(version='@ 2022 MB. V0.90', title=flask_app.config['HTML_TITLE'], site_name=flask_app.config['SITE_NAME'])
+    return dict(version='@ 2022 MB. V0.91', title=flask_app.config['HTML_TITLE'], site_name=flask_app.config['SITE_NAME'])
 
 
 #  enable logging
