@@ -121,6 +121,7 @@ flask_app.config.from_pyfile('config.py')
 # V0.89: bugfix, set default color to none
 # V0.90: bugifx, if a student is registered twice, show appropriate error message
 # V0.91: pip install update
+# V0.92: bugfix formio and datetime
 
 
 #TODO: add sequence numbers when on the waiting list.  Add them on the confirmation document?
