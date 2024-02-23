@@ -40,7 +40,6 @@ six==1.15.0
 SQLAlchemy==1.4.8
 tzlocal==2.1
 urllib3==1.26.8
-uWSGI==2.0.20
 webencodings==0.5.1
 Werkzeug==1.0.1
 WTForms==2.3.3
