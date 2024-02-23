@@ -68,18 +68,20 @@ def login_ss():
                 user.email = profile['email']
                 db.session.commit()
             else:
-                profile['first_name'] = profile['name']
-                profile['last_name'] = profile['surname']
-                profile['user_type'] = User.USER_TYPE.OAUTH
-                profile['level'] = 1
+                user = User()
+                user.first_name = profile['name']
+                user.last_name = profile['surname']
+                user.user_type = User.USER_TYPE.OAUTH
+                user.level = 3
                 db.session.add(user)
+                db.session.commit()
             login_user(user)
             log.info(u'OAUTH user {} logged in'.format(user.username))
             if not user:
                 log.error('Could not save user')
                 return redirect(url_for('auth.login'))
             # Ok, continue
-            return render_template('base.html', default_view=True)
+            return redirect(url_for('registration.show'))
     else:
         redirect_uri = f'{flask_app.config["SMARTSCHOOL_OUATH_REDIRECT_URI"]}/ss'
         return redirect(f'{flask_app.config["SMARTSCHOOL_OAUTH_SERVER"]}?app_uri={redirect_uri}')

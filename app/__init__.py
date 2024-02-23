@@ -124,6 +124,7 @@ flask_app.config.from_pyfile('config.py')
 # V0.92: bugfix formio and datetime
 # 0.93: add requirements.txt
 # 0.94: login via smartschool
+# 0.95: bufix login via smartschool
 
 
 #TODO: add sequence numbers when on the waiting list.  Add them on the confirmation document?
@@ -142,7 +143,7 @@ flask_app.config.from_pyfile('config.py')
 
 @flask_app.context_processor
 def inject_defaults():
-    return dict(version='@ 2022 MB. V0.94', title=flask_app.config['HTML_TITLE'], site_name=flask_app.config['SITE_NAME'])
+    return dict(version='@ 2022 MB. V0.95', title=flask_app.config['HTML_TITLE'], site_name=flask_app.config['SITE_NAME'])
 
 
 #  enable logging
