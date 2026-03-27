@@ -66,15 +66,16 @@ def login_ss():
                 profile['first_name'] = profile['name']
                 profile['last_name'] = profile['surname']
                 user.email = profile['email']
-                db.session.commit()
             else:
                 user = User()
                 user.first_name = profile['name']
                 user.last_name = profile['surname']
+                user.username = profile['username']
                 user.user_type = User.USER_TYPE.OAUTH
                 user.level = 3
                 db.session.add(user)
-                db.session.commit()
+            user.last_login = datetime.datetime.now()
+            db.session.commit()
             login_user(user)
             log.info(u'OAUTH user {} logged in'.format(user.username))
             if not user:
