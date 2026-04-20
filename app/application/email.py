@@ -1,21 +1,24 @@
 import app.data.settings
 from app.data import settings as msettings, guest as mguest
 from app.application import formio as mformio, util as mutil
-from app.data.models import Guest
+from app.data.entra import entra
 from app import email, log, email_scheduler, flask_app
 import datetime, time, sys
 from flask_mail import Message
 
-
-def send_email(to, subject, content):
-    sender = flask_app.config['MAIL_USERNAME']
-    msg = Message(sender=sender, recipients=[to], subject=subject, html=content)
-    try:
-        email.send(msg)
-        return True
-    except Exception as e:
-        log.error(f'send_email: ERROR, could not send email: {e}\n{to}\n{subject}\n{content}')
-    return False
+def send_email(to_list, subject, content):
+    log.info(f'{sys._getframe().f_code.co_name}: send_email to: {to_list}, subject: {subject}')
+    enable = msettings.get_configuration_setting('email-enable-send-email')
+    if enable:
+        try:
+            # microsoft does not support sending email via SMTP anymore.  Use of graph api is required
+            return entra.send_mail(to_list, subject, content)
+        except Exception as e:
+            log.error(f'{sys._getframe().f_code.co_name}: send_email: ERROR, could not send email: {e}')
+        return False
+    else:
+        log.info('{sys._getframe().f_code.co_name}: email server is not enabled')
+        return False
 
 
 def send_register_ack(**kwargs):
